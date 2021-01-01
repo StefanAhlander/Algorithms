@@ -1,5 +1,5 @@
-const availableCoins = [100, 50, 20, 10, 5, 2, 1];
-const targetAmount = 129;
+const availableCoins = [8, 6, 5, 1];
+const targetAmount = 63;
 
 function computeChange(coins, amount) {
   const calculatedChange = {
@@ -18,5 +18,26 @@ function computeChange(coins, amount) {
   return calculatedChange;
 }
 
-const change = computeChange(availableCoins, targetAmount);
+function computeChangeBruteForce(coins, amount) {
+  let results = [];
+  for (let i = 0; i < coins.length; i++) {
+    results.push(computeChange(coins.slice(i), amount));
+  }
+
+  let smallestAmountOfCoins = Number.MAX_SAFE_INTEGER;
+  let finalResult;
+  for (result of results) {
+    if (result.numberOfCoins < smallestAmountOfCoins) {
+      smallestAmountOfCoins = result.numberOfCoins;
+      finalResult = result;
+    }
+  }
+
+  return finalResult;
+}
+
+const change = computeChangeBruteForce(availableCoins, targetAmount);
 console.log(change);
+
+// time complexity gready algorithm = 0(n)
+// time complexity brute force algorithm = 0(n^2)
