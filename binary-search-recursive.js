@@ -1,12 +1,5 @@
 function findElement(sortedArray, elementToSearchFor, currentIndex = 0) {
-  const length = sortedArray.length;
-  let halfwayPoint;
-
-  if (length % 2 === 0) {
-    halfwayPoint = length / 2;
-  } else {
-    halfwayPoint = Math.floor((sortedArray.length - 1) / 2);
-  }
+  let halfwayPoint = Math.floor((sortedArray.length - 1) / 2);
 
   const elementAtHalf = sortedArray[halfwayPoint];
 
@@ -16,9 +9,9 @@ function findElement(sortedArray, elementToSearchFor, currentIndex = 0) {
 
   if (elementAtHalf < elementToSearchFor) {
     return findElement(
-      sortedArray.slice(halfwayPoint),
+      sortedArray.slice(halfwayPoint + 1),
       elementToSearchFor,
-      (currentIndex += halfwayPoint)
+      (currentIndex += halfwayPoint + 1)
     );
   } else {
     return findElement(
