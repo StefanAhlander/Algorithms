@@ -22,8 +22,13 @@ function findElement(sortedArray, elementToSearchFor, currentIndex = 0) {
   }
 }
 
-const array = [3, 6, 56, 78, 102, 256, 257, 1000, 1180, 1234];
+const array_1 = [3, 6, 56, 78, 102, 256, 257, 1000, 1180, 1234];
+const array_2 = [3, 6, 56, 78, 102, 256, 257, 1000, 1180, 1234, 2345];
 
-array.forEach((el) => {
-  console.log(findElement(array, el));
+array_1.forEach((el) => {
+  console.log(findElement(array_1, el));
+});
+
+array_2.forEach((el) => {
+  console.log(findElement(array_2, el));
 });
